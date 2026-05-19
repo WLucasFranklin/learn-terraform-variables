@@ -1,13 +1,13 @@
 terraform {
 
-/*
+
   cloud {
     organization = "policy-as-code-training"
     workspaces {
       name = "tf-vault-qa-wlf"
     }
   }
-*/
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -133,4 +133,11 @@ module "ec2_instances" {
     project     = "project-alpha",
     environment = "development"
   }
+}
+
+module "s3_bucket" {
+  source  = "app.terraform.io/policy-as-code-training/terraform-aws-s3-bucket-wlf1/aws"
+  version = "1.0.0"
+  
+  bucket_name = "unique-bucket-5192026342"
 }
